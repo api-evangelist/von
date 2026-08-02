@@ -1,0 +1,53 @@
+generated: 2026-07-21
+method: probed
+source: live HTTP probes of vonlabs.ai hosts
+provider: von
+note: >-
+  No genuine well-known artifacts found. Two endpoints returned HTTP 200 but
+  were single-page-app catch-alls, not real documents: docs.vonlabs.ai/llms.txt
+  307-redirects to a GitBook visitor-auth (Scalekit) login shell, and
+  app.vonlabs.ai/.well-known/openid-configuration serves the Von web app HTML
+  shell rather than an OIDC discovery JSON document. No files saved.
+probes:
+- path: /.well-known/security.txt
+  host: vonlabs.ai
+  status: 404
+- path: /.well-known/security.txt
+  host: www.vonlabs.ai
+  status: 404
+- path: /.well-known/openid-configuration
+  host: vonlabs.ai
+  status: 404
+- path: /.well-known/openid-configuration
+  host: app.vonlabs.ai
+  status: 200
+  false_positive: true
+  detail: text/html SPA shell, not JSON; not saved
+- path: /.well-known/oauth-authorization-server
+  host: vonlabs.ai
+  status: 404
+- path: /.well-known/api-catalog
+  host: vonlabs.ai
+  status: 404
+- path: /.well-known/ai-plugin.json
+  host: vonlabs.ai
+  status: 404
+- path: /llms.txt
+  host: vonlabs.ai
+  status: 404
+- path: /llms.txt
+  host: www.vonlabs.ai
+  status: 404
+- path: /llms.txt
+  host: docs.vonlabs.ai
+  status: 307
+  false_positive: true
+  detail: redirects to GitBook visitor-auth login (Scalekit); docs are gated
+- path: /
+  host: api.vonlabs.ai
+  status: 404
+  detail: host resolves and serves 404; no public API surface exposed
+- path: /
+  host: status.vonlabs.ai
+  status: 0
+  detail: no response; no public status page found

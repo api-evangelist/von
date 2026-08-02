@@ -1,7 +1,15 @@
 aid: von
 name: Von
-description: Von is a company surfaced as a portfolio company of insight-partners and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Von (vonlabs.ai) is an AI RevOps agent from Rattle Software, the Insight
+  Partners and Sequoia backed team behind gorattle.com, positioned as an AI
+  data scientist for revenue teams. Von connects to CRMs, data warehouses,
+  call recorders, and sales engagement tools - Salesforce, HubSpot, Snowflake,
+  BigQuery, Databricks, Gong, Outreach, Salesloft, and more, plus 100+
+  integrations consumed via MCP - to automate pipeline forecasting, win/loss
+  analysis, churn detection, sales coaching, and Salesforce administration.
+  Von publishes no public API or developer program; its security posture is
+  documented at trust.vonlabs.ai (SOC 2 Type 2, SOC 3, ISO 27001, CASA Tier 2).
 url: https://raw.githubusercontent.com/api-evangelist/von/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,11 +17,29 @@ x-backed-by:
 - insight-partners
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
+- Artificial Intelligence
+- Revenue Operations
+- Sales
+- CRM
+- Analytics
+- SaaS
+image: https://vonlabs-public-assets.s3.us-west-2.amazonaws.com/v2/vonlabs-logo.png
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -21,5 +47,42 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/von-trust-center.yml
+- type: Compliance
+  url: security/von-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/von-vulnerability-disclosure.yml
+- type: Security
+  url: security/von-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/von-domain-security.yml
 - type: Website
-  url: https://www.gorattle.com/
+  url: https://vonlabs.ai/
+- type: Blog
+  url: https://vonlabs.ai/blog
+- type: Support
+  url: https://vonlabs.ai/contact
+- type: HelpCenter
+  url: https://docs.vonlabs.ai/
+- type: Events
+  url: https://vonlabs.ai/events
+- type: Login
+  url: https://app.vonlabs.ai/
+- type: TermsOfService
+  url: https://vonlabs.ai/legal/terms
+- type: PrivacyPolicy
+  url: https://vonlabs.ai/legal/privacy-policy
+- type: LinkedIn
+  url: https://www.linkedin.com/company/vonlabs/
+- type: YouTube
+  url: https://www.youtube.com/@Vonlabs
+- type: WellKnown
+  url: well-known/von-well-known.yml
+- type: LLMsTxt
+  url: llms/von-llms.txt
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 5
+  pass: local-v1
