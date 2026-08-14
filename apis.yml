@@ -30,7 +30,7 @@ accessModel:
   method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-13'
 tags:
 - Company
 - Artificial Intelligence
@@ -77,12 +77,28 @@ common:
   url: https://www.linkedin.com/company/vonlabs/
 - type: YouTube
   url: https://www.youtube.com/@Vonlabs
-- type: WellKnown
-  url: well-known/von-well-known.yml
 - type: LLMsTxt
   url: llms/von-llms.txt
 x-enrichment:
-  date: '2026-07-21'
-  status: enriched
-  artifacts_added: 5
+  date: '2026-08-13'
+  status: minimal
+  artifacts_added: 2
   pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Von ships an end-user AI RevOps agent and markets no API at all - api.vonlabs.ai
+    resolves to a Kubernetes ingress that returns nginx 404 for every path probed,
+    mcp.vonlabs.ai is NXDOMAIN, and the company's own build-vs-buy page positions
+    its one-click connectors as the alternative to a customer building an MCP server.
+  evidence:
+  - url: https://api.vonlabs.ai/openapi.json
+    status: 404
+  - url: https://vonlabs.ai/developers
+    status: 404
+  - url: https://vonlabs.ai/.well-known/agent-card.json
+    status: 404
+  - url: https://docs.vonlabs.ai/
+    status: 307
+  checked: '2026-08-13'
