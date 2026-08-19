@@ -1,0 +1,46 @@
+generated: '2026-08-13'
+method: searched
+source: registry searches (npm, PyPI) + GitHub org lookups, 2026-08-13
+provider: von
+package_count: 0
+packages: []
+registries_checked:
+- registry: npm
+  query: https://registry.npmjs.org/-/v1/search?text=vonlabs
+  status: 200
+  result: no packages
+- registry: pypi
+  query: https://pypi.org/pypi/vonlabs/json
+  status: 404
+  result: absent
+- registry: pypi
+  query: https://pypi.org/pypi/von-sdk/json
+  status: 404
+  result: absent
+github_orgs_checked:
+- org: vonlabs
+  url: https://api.github.com/orgs/vonlabs
+  status: 404
+- org: gorattle
+  url: https://api.github.com/orgs/gorattle
+  status: 404
+- org: rattle-io
+  url: https://api.github.com/orgs/rattle-io
+  status: 404
+- org: von-labs
+  url: https://github.com/Von-Labs
+  status: 200
+  owned_by_this_company: false
+  detail: >-
+    NOT Von (vonlabs.ai). github.com/Von-Labs is an unrelated Solana/DeFi
+    organization created 2025-06-20 whose eight public repos are
+    zivo-exchange, hook-amm, solana-mobile-defi-agent, cyrix-network,
+    awesome-solana-ai and similar on-chain projects, with no link back to
+    vonlabs.ai. Recorded here so a later round does not wire it as Von's
+    GitHubOrganization on a name match.
+note: >-
+  Von ships no client libraries, no SDK and no CLI. This follows from having no
+  public API at all: the product is an end-user AI RevOps agent that CONSUMES
+  third-party connectors and MCP servers rather than exposing a contract of its
+  own. No Packages or SDKs pointer is wired in apis.yml — an empty registry
+  sweep is evidence of absence, not a package surface.

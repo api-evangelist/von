@@ -1,4 +1,4 @@
-generated: '2026-07-21'
+generated: '2026-08-13'
 method: searched
 probe: true
 source: https://trust.vonlabs.ai/
@@ -7,12 +7,15 @@ platform: SafeBase by Drata
 certifications:
 - SOC 2 Type 2
 - SOC 3
-- ISO 27001
+- ISO/IEC 27001:2022
 - CASA Tier 2
 contacts:
   support: Support@vonlabs.ai
   security: security@vonlabs.ai
 documents:
+- CASA Tier 2
+- SOC 2 Type 2
+- SOC 3
 - Data Processing Agreement
 - Pentest Report
 - Access Monitoring
@@ -24,12 +27,23 @@ subprocessors:
 - Airbyte
 - Scalekit
 - OpenAI
+privacy_frameworks:
+- CCPA
 evidence:
 - source: https://trust.vonlabs.ai/
+  http_status: 200
+  fetched: '2026-08-13'
   keywords:
-  - soc 2
+  - soc 2 type 2
   - soc 3
   - iso 27001
   - casa tier 2
-  - trust center
+  - safebase
+  - drata
   - responsible disclosure
+note: >-
+  Re-verified live 2026-08-13 (HTTP 200). The mechanical probe pass had
+  flattened this file to two certifications; the full SafeBase listing
+  (certifications, documents, subprocessors, contacts) was restored from the
+  live page rather than left downgraded. Von publishes no other security
+  surface: no /.well-known/security.txt, no bug bounty program.

@@ -1,0 +1,26 @@
+generated: '2026-08-13'
+method: searched
+source: https://vonlabs.ai/ (site survey + sitemap.xml, 2026-08-13)
+provider: von
+plan_count: 0
+pricing_model: contact-sales
+public_pricing: false
+plans: []
+evidence:
+- url: https://vonlabs.ai/pricing
+  status: 404
+- url: https://vonlabs.ai/sitemap.xml
+  status: 200
+  detail: >-
+    Full sitemap enumerated (43 URLs); it contains no /pricing, /plans or
+    /packages page. Commercial entry points are /contact and the "Get a demo"
+    call to action only.
+- url: https://vonlabs.ai/contact
+  status: 200
+note: >-
+  Von publishes no pricing tiers, quotas, seat prices or overage terms of any
+  kind. It is sold as an enterprise "AI headcount" through a demo/contact-sales
+  motion, and its own build-vs-buy page argues cost in headcount terms rather
+  than listing a rate card. plan_count: 0 is a measured absence, not an
+  unchecked field. No Plans or Pricing pointer is wired into apis.yml, because
+  there is no published pricing page for a pointer to reference.

@@ -1,13 +1,27 @@
-generated: 2026-07-21
+generated: '2026-08-13'
 method: probed
 source: live HTTP probes of vonlabs.ai hosts
 provider: von
+result: no-documents
 note: >-
-  No genuine well-known artifacts found. Two endpoints returned HTTP 200 but
-  were single-page-app catch-alls, not real documents: docs.vonlabs.ai/llms.txt
-  307-redirects to a GitBook visitor-auth (Scalekit) login shell, and
-  app.vonlabs.ai/.well-known/openid-configuration serves the Von web app HTML
-  shell rather than an OIDC discovery JSON document. No files saved.
+  No genuine well-known documents are served by Von on any host. Round two
+  (2026-08-13) re-probed every host and added the A2A agent-card paths. Two
+  classes of false positive were recorded and rejected: app.vonlabs.ai answers
+  HTTP 200 with the same 3,096-byte React SPA shell for EVERY path probed
+  (including /.well-known/agent-card.json and /openapi.json), and
+  docs.vonlabs.ai 307-redirects to a GitBook visitor-auth handshake
+  (integrations.gitbook.com .../visitor-auth) before returning a Scalekit login
+  shell. vonlabs.ai itself answers 404 with the literal body
+  "Invalid .well-known request" for every /.well-known/* path. Nothing saved,
+  and no WellKnown/SecurityTxt pointer is wired in apis.yml, because a recorded
+  absence must not be scored as a presence.
+hosts_probed:
+- vonlabs.ai
+- www.vonlabs.ai
+- api.vonlabs.ai
+- app.vonlabs.ai
+- docs.vonlabs.ai
+- mcp.vonlabs.ai
 probes:
 - path: /.well-known/security.txt
   host: vonlabs.ai
@@ -19,6 +33,9 @@ probes:
   host: vonlabs.ai
   status: 404
 - path: /.well-known/openid-configuration
+  host: api.vonlabs.ai
+  status: 404
+- path: /.well-known/openid-configuration
   host: app.vonlabs.ai
   status: 200
   false_positive: true
@@ -26,6 +43,46 @@ probes:
 - path: /.well-known/oauth-authorization-server
   host: vonlabs.ai
   status: 404
+- path: /.well-known/oauth-authorization-server
+  host: api.vonlabs.ai
+  status: 404
+- path: /.well-known/oauth-protected-resource
+  host: vonlabs.ai
+  status: 404
+- path: /.well-known/oauth-protected-resource
+  host: api.vonlabs.ai
+  status: 404
+- path: /.well-known/agent-card.json
+  host: vonlabs.ai
+  status: 404
+  detail: body is the literal "Invalid .well-known request" stub
+- path: /.well-known/agent-card.json
+  host: www.vonlabs.ai
+  status: 404
+- path: /.well-known/agent-card.json
+  host: api.vonlabs.ai
+  status: 404
+- path: /.well-known/agent-card.json
+  host: app.vonlabs.ai
+  status: 200
+  false_positive: true
+  detail: 3,096-byte React SPA shell served for every path; not an AgentCard
+- path: /.well-known/agent-card.json
+  host: docs.vonlabs.ai
+  status: 200
+  false_positive: true
+  detail: GitBook/Scalekit visitor-auth login shell; not an AgentCard
+- path: /.well-known/agent.json
+  host: vonlabs.ai
+  status: 404
+- path: /.well-known/agent.json
+  host: api.vonlabs.ai
+  status: 404
+- path: /.well-known/agent.json
+  host: app.vonlabs.ai
+  status: 200
+  false_positive: true
+  detail: same SPA shell; not an AgentCard
 - path: /.well-known/api-catalog
   host: vonlabs.ai
   status: 404
@@ -42,12 +99,25 @@ probes:
   host: docs.vonlabs.ai
   status: 307
   false_positive: true
-  detail: redirects to GitBook visitor-auth login (Scalekit); docs are gated
+  detail: redirects to GitBook visitor-auth (Scalekit); product docs are gated
+- path: /openapi.json
+  host: api.vonlabs.ai
+  status: 404
+- path: /openapi.json
+  host: vonlabs.ai
+  status: 404
 - path: /
   host: api.vonlabs.ai
   status: 404
-  detail: host resolves and serves 404; no public API surface exposed
+  detail: >-
+    Host resolves to a Kubernetes ingress ELB in us-west-2 and serves nginx 404
+    for every path probed (/, /health, /v1, /api, /docs, /graphql, /mcp, /sse,
+    /openapi, /redoc); it is the app backend, not a public API surface.
+- path: /
+  host: mcp.vonlabs.ai
+  status: 0
+  detail: NXDOMAIN; Von hosts no MCP server of its own
 - path: /
   host: status.vonlabs.ai
   status: 0
-  detail: no response; no public status page found
+  detail: NXDOMAIN; no public status page
