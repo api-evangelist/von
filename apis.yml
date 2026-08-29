@@ -11,6 +11,9 @@ description: >-
   Von publishes no public API or developer program; its security posture is
   documented at trust.vonlabs.ai (SOC 2 Type 2, SOC 3, ISO 27001, CASA Tier 2).
 url: https://raw.githubusercontent.com/api-evangelist/von/refs/heads/main/apis.yml
+x-api-posture: no-product-api
+x-api-posture-basis: observed
+x-api-posture-note: "Von publishes no public API or developer program; its security posture is documented at trust.vonlabs.ai (SOC 2 Type 2, SOC 3, ISO 27001, CASA Tier 2)."
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
